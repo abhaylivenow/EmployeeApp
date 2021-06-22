@@ -1,6 +1,7 @@
 package com.example.internprojectday1;
 
 public class Employee {
+    private String key;
     private String id;
     private String name;
     private String mobile;
@@ -8,6 +9,10 @@ public class Employee {
     private String designation;
     private String reportingTo;
     private String DOJ;
+    private String DOB;
+    //employee type
+    private String type;
+    private String currRating;
     private String rights;
 
     public Employee(){
@@ -23,6 +28,53 @@ public class Employee {
         this.reportingTo = reportingTo;
         this.DOJ = DOJ;
         this.rights = rights;
+    }
+
+    public Employee(String key, String id, String name, String mobile, String email, String designation, String reportingTo, String DOJ, String DOB, String type, String currRating, String rights) {
+        this.key = key;
+        this.id = id;
+        this.name = name;
+        this.mobile = mobile;
+        this.email = email;
+        this.designation = designation;
+        this.reportingTo = reportingTo;
+        this.DOJ = DOJ;
+        this.DOB = DOB;
+        this.type = type;
+        this.currRating = currRating;
+        this.rights = rights;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getCurrRating() {
+        return currRating;
+    }
+
+    public void setCurrRating(String currRating) {
+        this.currRating = currRating;
     }
 
     public String getId() {
