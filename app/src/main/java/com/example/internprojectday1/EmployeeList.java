@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -69,6 +70,13 @@ public class EmployeeList extends AppCompatActivity implements RecyclerViewAdapt
 
     @Override
     public void onProductCLick(int position) {
-        Toast.makeText(this, "Item clicked", Toast.LENGTH_SHORT).show();
+
+        // get the key of the clicked item user and send to the EditDetail activity
+        String key = uidList.get(position);
+
+        Intent intent = new Intent(EmployeeList.this,EditDetails.class);
+        intent.putExtra("key",key);
+        startActivity(intent);
+
     }
 }

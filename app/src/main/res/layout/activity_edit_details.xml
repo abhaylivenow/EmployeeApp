@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background_color"
-    tools:context=".MainActivity">
+    tools:context=".EditDetails">
 
     <TextView
         android:id="@+id/HeaderText"
@@ -15,7 +15,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
         android:fontFamily="sans-serif"
-        android:text="@string/Register"
+        android:text="Update"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintLeft_toLeftOf="parent"
