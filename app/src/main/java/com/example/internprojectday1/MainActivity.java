@@ -16,8 +16,6 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseReference mRef;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
