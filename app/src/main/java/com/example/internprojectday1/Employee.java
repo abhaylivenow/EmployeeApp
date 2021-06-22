@@ -10,6 +10,10 @@ public class Employee {
     private String DOJ;
     private String rights;
 
+    public Employee(){
+
+    }
+
     public Employee(String id, String name, String mobile, String email, String designation, String reportingTo, String DOJ, String rights) {
         this.id = id;
         this.name = name;
