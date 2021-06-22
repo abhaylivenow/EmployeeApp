@@ -1,14 +1,14 @@
 package com.example.internprojectday1;
 
 public class Employee {
-    String id;
-    String name;
-    String mobile;
-    String email;
-    String designation;
-    String reportingTo;
-    String DOJ;
-    String rights;
+    private String id;
+    private String name;
+    private String mobile;
+    private String email;
+    private String designation;
+    private String reportingTo;
+    private String DOJ;
+    private String rights;
 
     public Employee(String id, String name, String mobile, String email, String designation, String reportingTo, String DOJ, String rights) {
         this.id = id;
