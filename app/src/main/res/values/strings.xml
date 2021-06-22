@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">InternProjectDay1</string>
+    <string name="app_name">One17</string>
+    <string name="EmployeeName">Name</string>
+    <string name="EmployeeEmail">Email</string>
+    <string name="EmployeeMobile">Mobile</string>
+    <string name="EmployeeId">Employee Id</string>
+    <string name="EmployeeDoj">Date of join</string>
+    <string name="EmployeeDeg">Designation</string>
+    <string name="SubmitBtn">Submit</string>
+    <string name="Register">Register</string>
 </resources>
