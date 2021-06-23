@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InternProjectDay1">
+        <activity android:name=".EmployeeTaskTableActivity"></activity>
         <activity android:name=".verifyenterotp" />
         <activity android:name=".OtpVerification" />
         <activity android:name=".EmployeeList" />
