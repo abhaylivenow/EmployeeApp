@@ -10,5 +10,6 @@ public class ApplicationClass extends Application {
     public void onCreate() {
         super.onCreate();
         startActivity(new Intent(this, OtpVerification.class));
+        //startActivity(new Intent(this,EmployeeRegistration.class));
     }
 }

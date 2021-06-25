@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
@@ -29,11 +31,20 @@ public class TaskList extends AppCompatActivity implements RecyclerViewAdapter.o
     List<Task> taskList = new ArrayList<>();
     List<String> keyList = new ArrayList<>();
     RecyclerView recyclerView;
+    ViewPager viewPager;
+    ViewPagerAdapter viewPagerAdapter;
+    String todayTaskTitle,todayTaskDescription;
+    String yesterdayTaskTitle,yesterdayTaskDescription;
+    String tommorowTaskTitle,tommorowTaskDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
+
+        viewPager=findViewById(R.id.viewpager1);
+        viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(viewPagerAdapter);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -70,6 +81,58 @@ public class TaskList extends AppCompatActivity implements RecyclerViewAdapter.o
                 return false;
             }
         });
+  /*
+        Query query = mRef.child("taskTable").orderByChild("startTime").equalTo("Today");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()){
+                    todayTaskTitle=postSnapshot.child("head").getValue().toString();
+                    todayTaskDescription=postSnapshot.child("des").getValue().toString();
+                    sendtodaytask(todayTaskTitle,todayTaskDescription);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+        Query query1 = mRef.child("taskTable").orderByChild("startTime").equalTo("Tomorrow");
+        query1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()){
+                    tommorowTaskTitle=postSnapshot.child("head").getValue().toString();
+                    tommorowTaskDescription=postSnapshot.child("des").getValue().toString();
+                    sendtodaytask(tommorowTaskTitle,tommorowTaskDescription);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+
+        Query query3 = mRef.child("taskTable").orderByChild("startTime").equalTo("Yesterday");
+        query3.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()){
+                    yesterdayTaskTitle=postSnapshot.child("head").getValue().toString();
+                    yesterdayTaskDescription=postSnapshot.child("des").getValue().toString();
+                    sendtodaytask(yesterdayTaskTitle,yesterdayTaskDescription);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
+*/
         addDataToRecyclerViewToday();
     }
 
