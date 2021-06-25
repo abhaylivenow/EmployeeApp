@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InternProjectDay1">
-        <activity android:name=".EmployeeList"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".task_detail"></activity>
+        <activity android:name=".TaskList" />
+
+        <activity android:name=".EmployeeTaskTable" />
+        <activity android:name=".verifyenterotp" />
+
+        <activity android:name=".OtpVerification">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

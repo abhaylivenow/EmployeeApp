@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/today"
+        android:title="Today"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item
+        android:id="@+id/todo"
+        android:title="To do"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item
+        android:id="@+id/inProgress"
+        android:title="In progress"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item
+        android:id="@+id/completed"
+        android:title="Completed"
+        android:icon="@drawable/ic_dashboard"/>
+
+    <item
+        android:id="@+id/overDue"
+        android:title="Over Due"
+        android:icon="@drawable/ic_dashboard"/>
+
+</menu>

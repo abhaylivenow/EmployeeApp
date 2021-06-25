@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
+    app:cardCornerRadius="10dp"
     android:layout_marginTop="8dp">
 
     <RelativeLayout
@@ -15,82 +16,29 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/txt_name"
+            android:id="@+id/task_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="Task Heading"
             android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="22sp"/>
 
         <TextView
-            android:id="@+id/txt_id"
+            android:id="@+id/task_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ID"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentRight="true"
-            android:textSize="18sp"/>
+            android:text="Task description"
+            android:layout_below="@+id/task_heading"
+            android:textSize="17sp"/>
 
         <TextView
-            android:id="@+id/txtEmail"
+            android:id="@+id/task_priority"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:textStyle="bold"
-            android:layout_below="@id/txt_name"
-            android:textSize="18sp"/>
+            android:text="Priority : High"
+            android:layout_below="@id/task_description"
+            android:textSize="17sp"/>
 
-        <TextView
-            android:id="@+id/txt_mobile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mobile"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/txt_id"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/txt_designation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Designation"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/txt_mobile"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/txt_reporting_to"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reporting to"
-            android:textStyle="bold"
-            android:layout_marginLeft="20dp"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/txt_designation"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/txt_doj"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date of joining"
-            android:textStyle="bold"
-            android:layout_below="@id/txtEmail"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:id="@+id/txt_rights"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rights"
-            android:textStyle="bold"
-            android:layout_below="@id/txt_doj"
-            android:textSize="18sp"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

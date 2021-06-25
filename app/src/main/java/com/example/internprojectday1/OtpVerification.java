@@ -25,7 +25,6 @@ public class OtpVerification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_verification);
-
         enternumber=findViewById(R.id.input_mobile_number);
         getotpbutton=findViewById(R.id.buttongetotp);
 
@@ -81,6 +80,5 @@ public class OtpVerification extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

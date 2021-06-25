@@ -154,11 +154,11 @@
             android:orientation="horizontal">
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Didn't recieve the OTP?"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Didn't recieve the OTP?"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textresendotp"
@@ -183,7 +183,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
                 android:background="@color/color_primary"
-                android:text="Get OTP"
+                android:text="Verify OTP"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 

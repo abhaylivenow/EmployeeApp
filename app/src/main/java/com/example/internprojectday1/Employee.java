@@ -10,6 +10,7 @@ public class Employee {
     private String reportingTo;
     private String DOJ;
     private String DOB;
+    // department
     //employee type
     private String type;
     private String currRating;

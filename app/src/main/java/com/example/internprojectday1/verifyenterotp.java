@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,13 +35,16 @@ import java.util.concurrent.TimeUnit;
 
 public class verifyenterotp extends AppCompatActivity {
 
+    DatabaseReference reff;
     String getotpbackend;
     EditText inputnumber1,inputnumber2,inputnumber3,inputnumber4,inputnumber5,inputnumber6;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verifyenterotp);
 
+        reff= FirebaseDatabase.getInstance().getReference();
         final Button verifybuttonclick= findViewById(R.id.buttongetotp);
 
         inputnumber1=findViewById(R.id.inputotp1);
@@ -72,29 +82,47 @@ public class verifyenterotp extends AppCompatActivity {
                                 getotpbackend,entercodeotp);
 
                         FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                verifybuttonclick.setVisibility(View.VISIBLE);
+                                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
+                                        progressBar.setVisibility(View.GONE);
+                                        verifybuttonclick.setVisibility(View.VISIBLE);
 
-                                if(task.isSuccessful()){
-                                    Intent intent= new Intent(getApplicationContext(),MainActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-                                }else{
-                                    Toast.makeText(verifyenterotp.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                                        if(task.isSuccessful()){
+
+                                            String number=getIntent().getStringExtra("mobile");
+                                            Toast.makeText(verifyenterotp.this, "OTP verified", Toast.LENGTH_SHORT).show();
+                                            Query query= reff.child("employees").orderByChild("mobile").equalTo(number);
+                                            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+
+                                                    Intent intent= new Intent(getApplicationContext(),TaskList.class);
+                                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    startActivity(intent);
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                                                }
+                                            });
+
+                                            Toast.makeText(verifyenterotp.this, "Register activity", Toast.LENGTH_SHORT).show();
+                                            Intent intent= new Intent(verifyenterotp.this,RegisterActivity.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                        }else{
+                                            Toast.makeText(verifyenterotp.this, "Enter the correct OTP", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
 
 
                     }else{
                         Toast.makeText(verifyenterotp.this, "Please check internet connection", Toast.LENGTH_SHORT).show();
                     }
 
-
-                    // Toast.makeText(verifyenterotp.this, "OTP verify", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(verifyenterotp.this, "Please enter all numbers ", Toast.LENGTH_SHORT).show();
                 }
@@ -130,9 +158,7 @@ public class verifyenterotp extends AppCompatActivity {
                 );
             }
         });
-
     }
-
     //method to move pointer as soon as user enter a digit of the otp
     private void numberotpmove() {
 
@@ -144,9 +170,9 @@ public class verifyenterotp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if(!s.toString().trim().isEmpty()){
-                        inputnumber2.requestFocus();
-                    }
+                if(!s.toString().trim().isEmpty()){
+                    inputnumber2.requestFocus();
+                }
             }
 
             @Override
